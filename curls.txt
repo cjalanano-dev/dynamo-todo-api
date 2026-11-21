@@ -1,0 +1,19 @@
+# 1. Add two tasks for user "carlos"
+curl -X POST http://localhost:3000/todos/carlos \
+  -H "Content-Type: application/json" \
+  -d '{"task": "Build DynamoDB demo"}'
+
+curl -X POST http://localhost:3000/todos/carlos \
+  -H "Content-Type: application/json" \
+  -d '{"task": "Push code to GitHub"}'
+
+# 2. Fetch all tasks belonging only to "carlos"
+curl http://localhost:3000/todos/carlos
+
+# 3. Mark a task complete (replace <TODO_ID> with the TodoID returned above)
+curl -X PATCH http://localhost:3000/todos/carlos/<TODO_ID> \
+  -H "Content-Type: application/json" \
+  -d '{"completed": true, "task": "Build DynamoDB demo"}'
+
+# 4. Delete a task
+curl -X DELETE http://localhost:3000/todos/carlos/<TODO_ID>
